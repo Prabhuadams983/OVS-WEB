@@ -1,0 +1,22 @@
+<form #locationForm="ngForm" (submit)="addLocation()">
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+        <div class="form-group">
+            <input type="text" placeholder="Location Id" class="form-input" [class.invalid-form]="(locationId.invalid && locationId.touched) || (locationForm.submitted && locationId.invalid)" 
+                    ngModel name="locationId" #locationId="ngModel" required>
+            <span class="text-danger float-left" *ngIf="(locationId.invalid && locationId.touched) || (locationForm.submitted && locationId.invalid)">Enter id</span>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
+        <div class="form-group">
+            <input type="text" placeholder="Location Name" class="form-input" ngModel name="locationName" #locationName="ngModel">
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+        <div class="form-group">
+            <button type="submit" class="block-btn w-25">Add Location</button>
+        </div>
+    </div>
+    
+</div>
+</form>
