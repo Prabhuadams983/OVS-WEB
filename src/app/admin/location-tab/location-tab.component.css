@@ -1,0 +1,8 @@
+.locationId{
+    top: 32%;
+    left: 4%;
+    
+}
+input[name="locationId"]{
+    text-indent: 40px;
+}
