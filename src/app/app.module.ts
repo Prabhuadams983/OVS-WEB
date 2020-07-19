@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LocationTabComponent } from './admin/location-tab/location-tab.component';
 import { CandidateTabComponent } from './admin/candidate-tab/candidate-tab.component';
 import { UserTabComponent } from './admin/user-tab/user-tab.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UserTabComponent } from './admin/user-tab/user-tab.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
