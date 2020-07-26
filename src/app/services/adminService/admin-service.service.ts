@@ -35,4 +35,10 @@ export class AdminServiceService implements OnInit{
       console.log(response);
     });    
   }
+
+  addUser(user){
+    this._http.post(this.url+'/addUser',user).subscribe((response)=>{
+      console.log(response);
+    });
+  }
 }

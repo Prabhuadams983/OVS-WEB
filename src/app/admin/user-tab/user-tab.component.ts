@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AdminServiceService } from 'src/app/services/adminService/admin-service.service';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-tab',
@@ -10,22 +10,29 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class UserTabComponent implements OnInit {
   locationsList:any=[];
   userForm:FormGroup;
-  constructor(private adminService:AdminServiceService,
-              private formBuilder:FormBuilder) { 
+  constructor(private adminService:AdminServiceService) { 
     this.adminService.$locations.subscribe((locations)=>{
       this.locationsList = locations;  
     });
 
-    this.userForm = this.formBuilder.group({
-      name:['',Validators.required],
-      aadharId:['',Validators.maxLength(12)],
-      age:['',Validators.min(18)],
-      gender:['',Validators.required]
+    this.userForm = new FormGroup({
+      name:new FormControl('',Validators.required),
+      aadharId:new FormControl('',Validators.maxLength(12)),
+      age:new FormControl('',Validators.min(18)),
+      location:new FormControl('',Validators.required)
     })
   }
 
   ngOnInit() {
     
+  }
+
+  addUser(){
+    if(this.userForm.valid){
+      this.adminService.addUser(this.userForm.value);
+      this.userForm.reset();
+      document.querySelector('select').value = '';
+    }
   }
 
 }
