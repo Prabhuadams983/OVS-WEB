@@ -8,10 +8,9 @@ import { AdminComponent } from './admin/admin.component';
 import { LocationTabComponent } from './admin/location-tab/location-tab.component';
 import { CandidateTabComponent } from './admin/candidate-tab/candidate-tab.component';
 import { UserTabComponent } from './admin/user-tab/user-tab.component';
-
-
 import {HttpClientModule} from '@angular/common/http';
 import { AdminServiceService } from './services/adminService/admin-service.service';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -21,7 +20,8 @@ import { AdminServiceService } from './services/adminService/admin-service.servi
     AdminComponent,
     LocationTabComponent,
     CandidateTabComponent,
-    UserTabComponent
+    UserTabComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

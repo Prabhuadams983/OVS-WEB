@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Aadhar Number is: {{aadhar}}</h4>
+
+      <p class="card-text">{{name}}</p>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Candidate Name</th>
+            <th>Symbol</th>
+            <th>Party Name</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+          <tr *ngFor="let candidate of voters">
+            <td>{{candidate.candidateName}}</td>
+            <td>{{candidate.partyNamae}}</td>
+            <td>{{candidate.symbol}}</td>
+            <td class="text-center">
+                <button type="button" (click)="alert()" class="block-btn w-50">Vote</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+    </div>
+  </div>
