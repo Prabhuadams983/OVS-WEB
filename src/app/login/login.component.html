@@ -16,12 +16,14 @@
             </form>
         </div>
         <div *ngIf="showUser">
-            <form class="user">
+            <form class="user" #userForm="ngForm" (submit)="login()">
                 <div class="form-group mb-3">
-                    <input type="text" placeholder="Aadhar Number" class="form-input">
+                    <input type="text" placeholder="Aadhar Number" class="form-input" required name="aadharId" ngModel maxLength="12" #aadharId="ngModel"
+                    [class.invalid-form]="aadharId.invalid && aadharId.touched" minLength="12">
+                    <span class="text-danger" *ngIf="(aadharId.invalid && aadharId.touched) || (userForm.submitted && aadharId.invalid)">Aadhaar Number is Mandatory</span>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="block-btn">Login</button>
+                    <button type="submit" class="block-btn">Login</button>
                 </div>
                 <h6 class="text-center">Admin Login <a (click)="toggle()">here</a></h6>
             </form>
