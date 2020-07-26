@@ -46,3 +46,13 @@ body{
     font-weight: 500;
     font-size: 16px;
 }
+.locationId{
+    top: 32%;
+    left: 4%;
+    
+}
+input[name="locationId"],
+input[name="candidateId"]{
+    text-indent: 40px;
+}
+

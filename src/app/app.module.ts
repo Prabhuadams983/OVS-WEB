@@ -1,21 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
 import { LocationTabComponent } from './admin/location-tab/location-tab.component';
 import { CandidateTabComponent } from './admin/candidate-tab/candidate-tab.component';
 import { UserTabComponent } from './admin/user-tab/user-tab.component';
+import {HttpClientModule} from '@angular/common/http';
+import { AdminServiceService } from './services/adminService/admin-service.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminComponent,
-    UserComponent,
     LocationTabComponent,
     CandidateTabComponent,
     UserTabComponent
@@ -23,9 +23,11 @@ import { UserTabComponent } from './admin/user-tab/user-tab.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AdminServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
