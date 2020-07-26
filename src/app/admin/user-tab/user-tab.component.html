@@ -1,1 +1,37 @@
-<p>user-tab works!</p>
+<div *ngIf="locationsList.length > 0;else empty">
+    <form (submit)="addUser" [formGroup]="userForm">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="Name" formControlName="name" required>
+                <span class="text-danger" 
+                *ngIf="(userForm.get('name').invalid && userForm.get('name').touched) 
+                        || (userForm.submitted && userForm.get('name').invalid)">Name is required</span>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="Aadhaar Id" formControlName="aadharId" required maxlength="12">
+                <span class="text-danger" 
+                *ngIf="(userForm.get('aadharId').invalid && userForm.get('aadharId').touched) 
+                        || (userForm.submitted && userForm.get('aadharId').invalid)">Aadhar Number is required</span>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="Age" formControlName="age" required>
+                <span class="text-danger" 
+                *ngIf="(userForm.get('age').invalid && userForm.get('age').touched) 
+                        || (userForm.submitted && userForm.get('age').invalid)">Age is required</span>
+                    <span class="text-danger" *ngIf="userForm.get('age').valid && userForm.get('age').hasError('min')">Age must be grater than 18</span>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+<ng-template #empty>
+<div class="text-center">
+<img src="../../../assets/location-mark.png" width="200" height="200">
+<h4>No Locations Found</h4>
+</div>
+</ng-template>

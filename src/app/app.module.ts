@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -9,6 +9,7 @@ import { LocationTabComponent } from './admin/location-tab/location-tab.componen
 import { CandidateTabComponent } from './admin/candidate-tab/candidate-tab.component';
 import { UserTabComponent } from './admin/user-tab/user-tab.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AdminServiceService } from './services/adminService/admin-service.service';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AdminServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
