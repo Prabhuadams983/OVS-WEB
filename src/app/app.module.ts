@@ -11,6 +11,7 @@ import { UserTabComponent } from './admin/user-tab/user-tab.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AdminServiceService } from './services/adminService/admin-service.service';
 import { UserComponent } from './user/user.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UserComponent } from './user/user.component';
     LocationTabComponent,
     CandidateTabComponent,
     UserTabComponent,
-    UserComponent
+    UserComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

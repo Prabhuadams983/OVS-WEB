@@ -16,6 +16,13 @@ export class UserService {
     params.set("aadharId",aadharId);
     this._http.get(this.url+'/getUser',{params}).subscribe((response)=>{
       console.log(response);
- })
-}
+  })
+ }
+
+//  adminLogin(data){
+//    this._http.post(this.url+"/admin",data).subscribe((response)=>{
+//      console.log(response);
+//    })
+
+//  }
 }
