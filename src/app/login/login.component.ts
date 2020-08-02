@@ -10,6 +10,7 @@ import { UserService } from '../services/userService/user.service';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('userForm',{static:false}) userForm:NgForm;
+  @ViewChild("adminForm",{static:false}) adminForm:NgForm;
 
   header:String='admin';
   showAdmin:boolean=true;
@@ -32,9 +33,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(){
+  userLogin(){
     if(this.userForm.valid){
       this.userService.loginUser(this.userForm.value.aadharId);
+    }
+  }
+
+  adminLogin(){
+    if(this.adminForm.valid){
+     // this.userService.adminLogin(this.adminForm.value);
+      console.log(this.adminForm.value);
+
     }
   }
 

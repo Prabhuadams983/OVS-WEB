@@ -1,22 +1,29 @@
 <div class="login-form">
     <div class="form-content">
         <h4 class="text-center">{{header | uppercase}}</h4>
+
         <div *ngIf="showAdmin">
-            <form class="admin">
+            <form class="admin" #adminForm="ngForm" (submit)="adminLogin()" >
                 <div class="form-group mb-3">
-                    <input type="email" class="form-input" placeholder="E-mail">
+                    <input type="email" class="form-input" placeholder="E-mail" required name="emailId" ngModel #mailId="ngModel"
+                    [class.invalid-form]="mailId.invalid && mailId.touched">
+                    <span class="text-danger" *ngIf="(mailId.invalid && mailId.touched) || (adminForm.submitted && mailId.invalid)">Enter Mail Id</span>
                 </div>
                 <div class="form-group mb-3">
-                    <input type="password" class="form-input" placeholder="Password">
+                    <input type="password" class="form-input" placeholder="Password" required name="password" ngModel #password="ngModel"
+                    [class.invalid-form]="password.invalid && password.touched">
+                    <span class="text-danger" *ngIf="(password.invalid && password.touched) || (adminForm.submitted && password.invalid)" >Enter Password</span>
+
                 </div>
                 <div class="form-group">
-                    <button type="button" class="block-btn">Login</button>
+                    <button type="submit" class="block-btn">Login</button>
                 </div>
                 <h6 class="text-center">Users Login <a (click)="toggle()">here</a></h6>
             </form>
         </div>
+
         <div *ngIf="showUser">
-            <form class="user" #userForm="ngForm" (submit)="login()">
+            <form class="user" #userForm="ngForm" (submit)="userLogin()">
                 <div class="form-group mb-3">
                     <input type="text" placeholder="Aadhar Number" class="form-input" required name="aadharId" ngModel maxLength="12" #aadharId="ngModel"
                     [class.invalid-form]="aadharId.invalid && aadharId.touched" minLength="12">
