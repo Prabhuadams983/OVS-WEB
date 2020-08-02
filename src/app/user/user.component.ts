@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/userService/user.service';
 
 @Component({
   selector: 'app-user',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  aadhar:String="111122223333"
-  name:String="pankaj"
+  userData:any;
+  aadhar:String=""
+  name:String=""
   voters=[
     {
       "candidateName":"pankaj",
@@ -34,9 +35,10 @@ export class UserComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
+    this.userData = this.userService.userData;
   }
 
   alert(){
