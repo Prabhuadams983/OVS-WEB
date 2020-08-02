@@ -17,7 +17,7 @@ export class UserService {
     const params = new HttpParams().set('aadharId',aadharId);
     this._http.get(this.url+'/getUser',{params}).subscribe((response)=>{
       if(response["status"] == 200){
-        this.userData = response.user;
+        this.userData = response['user'];
         this.router.navigateByUrl('/user');
       }
  })

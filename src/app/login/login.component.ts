@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(this.userForm.valid){
-      // call api
       this.userService.loginUser(this.userForm.value.aadharId);
     }
   }
