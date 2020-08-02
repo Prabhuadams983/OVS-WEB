@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   showAdmin:boolean=true;
   showUser:boolean=false;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,
+              private adminService : AdminServiceService) { }
 
   ngOnInit() {
   }
@@ -41,9 +42,7 @@ export class LoginComponent implements OnInit {
 
   adminLogin(){
     if(this.adminForm.valid){
-     // this.userService.adminLogin(this.adminForm.value);
-      console.log(this.adminForm.value);
-
+     this.adminService.adminLogin(this.adminForm.value);
     }
   }
 
