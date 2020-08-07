@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
-import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from '../authService/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,10 @@ export class AdminServiceService implements OnInit{
   private httpClient : HttpClient;
   private url = "http://localhost:7781/ovs/api";
   public locationsList:any=[];
-  public $locations = new Subject()
   constructor(private _http:HttpClient,
               private httpBackend : HttpBackend,
-              private router:Router) {
-    this._http.get(this.url+'/getLocations').subscribe((response)=>{
-      this.$locations.next(response['locations']);
-    });
+              private router:Router,
+                private authService:AuthService) {
     this.httpClient = new HttpClient(httpBackend);
    }
 
@@ -36,19 +33,20 @@ export class AdminServiceService implements OnInit{
 
   addCandidate(candidate){
     this._http.post(this.url+'/addCandidate',candidate).subscribe((response)=>{
-      console.log(response);
+      
     });    
   }
 
   addUser(user){
     this._http.post(this.url+'/addUser',user).subscribe((response)=>{
-      console.log(response);
+      
     });
   }
 
   adminLogin(data){
-    this.httpClient.post(this.url+"/login",data)
+    this.httpClient.post(this.url+"/login",data,{observe:'response',responseType:'text'})
       .subscribe((res)=>{
+        this.authService.saveAccessToken(res.headers.get('X-Access-Token'));
         this.router.navigateByUrl('/admin');
       })
   }

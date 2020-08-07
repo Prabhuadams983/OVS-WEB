@@ -55,4 +55,27 @@ input[name="locationId"],
 input[name="candidateId"]{
     text-indent: 40px;
 }
+.spinner-border-sm{
+    width: 1.2rem!important;
+    height: 1.2rem!important;
+}
+.btn-outline-primary{
+    border-radius: 20px!important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.success{
+    background: #27ae60;
+    width: 70%;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.danger{
+    background: #e74c3c;
+    width: 70%;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}

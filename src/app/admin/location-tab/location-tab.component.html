@@ -18,7 +18,9 @@
     </div>
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
         <div class="form-group" style="margin-top: 2rem;">
-            <button type="submit" class="block-btn w-25">Add Location</button>
+            <button type="submit" class="block-btn w-25">Add Location
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" [class.d-none]="isSpinner"></span>
+            </button>
         </div>
     </div>
 </div>

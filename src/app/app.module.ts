@@ -8,11 +8,14 @@ import { AdminComponent } from './admin/admin.component';
 import { LocationTabComponent } from './admin/location-tab/location-tab.component';
 import { CandidateTabComponent } from './admin/candidate-tab/candidate-tab.component';
 import { UserTabComponent } from './admin/user-tab/user-tab.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AdminServiceService } from './services/adminService/admin-service.service';
 import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { TokenInterceptor } from './helpers/interceptor/TokenInterceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AlertMessage } from './utils/snackbar/snackbar';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,18 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
-  providers: [AdminServiceService],
+  providers: [AdminServiceService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptor,
+    multi:true
+  },
+  AlertMessage
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
