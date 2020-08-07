@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AdminServiceService } from 'src/app/services/adminService/admin-service.service';
 import { FormGroupDirective } from '@angular/forms';
+import { AdminComponent } from '../admin.component';
 
 @Component({
   selector: 'app-candidate-tab',
@@ -12,8 +13,9 @@ export class CandidateTabComponent implements OnInit {
   partyLogo : any;
   hideImg:boolean=false;
   @ViewChild('candidateForm',{static:false}) candidateForm : FormGroupDirective;
-  constructor(private adminService:AdminServiceService) { 
-      this.adminService.$locations.subscribe((locations)=>{
+  constructor(private adminService:AdminServiceService,
+              private admin : AdminComponent) { 
+      this.admin.$locations.subscribe((locations)=>{
         this.locationsList = locations;
       });
   }
