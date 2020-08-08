@@ -16,7 +16,8 @@ import { TokenInterceptor } from './helpers/interceptor/TokenInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AlertMessage } from './utils/snackbar/snackbar';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './utils/dialog/dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +27,10 @@ import { AlertMessage } from './utils/snackbar/snackbar';
     CandidateTabComponent,
     UserTabComponent,
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    DialogComponent
   ],
+  entryComponents:[DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,7 +38,8 @@ import { AlertMessage } from './utils/snackbar/snackbar';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [AdminServiceService,
   {

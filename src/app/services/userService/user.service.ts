@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../authService/auth.service';
+import { AlertMessage } from 'src/app/utils/snackbar/snackbar';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,31 @@ export class UserService {
   private httpClient : HttpClient;
   constructor(private _http:HttpClient,
               private router:Router,httpBackend : HttpBackend,
-              private authService:AuthService) {
+              private authService:AuthService,
+              private alert:AlertMessage) {
                 this.httpClient = new HttpClient(httpBackend);
                }
 
   loginUser(aadharId){
-    const params = new HttpParams().set('aadharId',aadharId);
-    this.httpClient.post(this.url+'/getUser',{params},{observe:'response',responseType:'text'})
+    this.httpClient.post(this.url+'/getUser',{"aadharId":aadharId},{observe:'response',responseType:'text'})
     .subscribe((response)=>{
-      if(response["status"] == 200){
+      const res = JSON.parse(response.body);
+      if(response["status"] == 200 && !res['isVoted']){
         this.authService.saveAccessToken(response["headers"].get('X-Access-Token'));
-        this.userData = response['user'];
+        this.userData = res.user;
         this.router.navigateByUrl('/user');
+      }else{
+        this.alert.showSuccessAlert(res.msg,'');
       }
  })
+}
+
+addVote(data){
+  this._http.put(this.url+"/addVote",data,{observe:'response'})
+      .subscribe((response)=>{
+        if(response['status'] == 200){
+          this.authService.logOut();
+        }
+    })
 }
 }
