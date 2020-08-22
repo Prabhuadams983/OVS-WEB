@@ -18,6 +18,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AlertMessage } from './utils/snackbar/snackbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './utils/dialog/dialog.component';
+import { ResultsTabComponent } from './admin/results-tab/results-tab.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { DialogComponent } from './utils/dialog/dialog.component';
     UserTabComponent,
     UserComponent,
     NavbarComponent,
-    DialogComponent
+    DialogComponent,
+    ResultsTabComponent
   ],
   entryComponents:[DialogComponent],
   imports: [

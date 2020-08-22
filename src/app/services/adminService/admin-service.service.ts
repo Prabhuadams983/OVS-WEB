@@ -50,4 +50,8 @@ export class AdminServiceService implements OnInit{
         this.router.navigateByUrl('/admin');
       })
   }
+
+  getResults(){
+    return this._http.get(this.url+"/result");
+  }
 }
